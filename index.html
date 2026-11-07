@@ -1,0 +1,334 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Abdeljalil Ajdidi, développeur Full Stack Senior Java / Angular à Casablanca.">
+<title>Abdeljalil Ajdidi</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: one narrow reading column; a migration diagram as the hero; a dated timeline; project pair; skills grid. */
+:root {
+  --bg: #eef1f4;
+  --surface: #ffffff;
+  --ink: #15202b;
+  --muted: #56636f;
+  --line: #d3dae1;
+  --accent: #b5741a;
+  --accent-soft: #f6e7cf;
+  --code-bg: #e3e8ee;
+  --display: "Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
+  --body: "IBM Plex Sans", "Segoe UI", system-ui, sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #10161c; --surface: #18212a; --ink: #e6ebf0; --muted: #9aa7b3;
+    --line: #2a3541; --accent: #e3a540; --accent-soft: #3a2c16; --code-bg: #212c37;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #10161c; --surface: #18212a; --ink: #e6ebf0; --muted: #9aa7b3;
+  --line: #2a3541; --accent: #e3a540; --accent-soft: #3a2c16; --code-bg: #212c37;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body { margin: 0; }
+img { max-width: 100%; }
+body {
+  background: var(--bg); color: var(--ink);
+  font-family: var(--body); font-size: 16px; line-height: 1.6;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+.wrap { max-width: 920px; margin: 0 auto; padding-block: 48px 72px; display: grid; gap: 72px; }
+h1, h2, h3 { font-family: var(--display); text-wrap: balance; margin: 0; line-height: 1.1; }
+h2 { font-size: 1.75rem; font-weight: 700; }
+h3 { font-size: 1.2rem; font-weight: 700; }
+p { margin: 0; }
+a { color: var(--accent); text-underline-offset: 3px; }
+a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
+.label { font-family: var(--mono); font-size: .75rem; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+.section { display: grid; gap: 28px; }
+.section-head { display: grid; gap: 6px; }
+
+/* Header */
+header { display: grid; gap: 20px; }
+.status { display: inline-flex; align-items: center; gap: 8px; width: fit-content;
+  font-family: var(--mono); font-size: .8rem; padding: 4px 12px; border-radius: 999px;
+  background: var(--accent-soft); color: var(--ink); }
+.status::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--accent); }
+h1 { font-size: clamp(2.6rem, 8vw, 4.6rem); font-weight: 800; letter-spacing: -.02em; }
+.role { font-family: var(--display); font-size: clamp(1.2rem, 3vw, 1.6rem); font-weight: 500; color: var(--muted); }
+.lede { max-width: 62ch; font-size: 1.08rem; }
+.contacts { display: flex; flex-wrap: wrap; gap: 10px 24px; font-size: .95rem; }
+.contact { display: inline-flex; align-items: center; gap: 8px; min-width: 0; }
+.contact span { user-select: all; overflow-wrap: anywhere; }
+.copy { font: 500 .72rem var(--mono); border: 1px solid var(--line); background: var(--surface);
+  color: var(--muted); padding: 2px 8px; border-radius: 6px; cursor: pointer; }
+.copy:hover { color: var(--ink); border-color: var(--muted); }
+
+/* Migration diagram */
+.migration { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 24px; display: grid; gap: 18px; }
+.diagram { overflow-x: auto; }
+.diagram svg { display: block; width: 100%; min-width: 560px; height: auto; }
+.diagram text { font-family: var(--mono); }
+.ladder { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; font-family: var(--mono); font-size: .85rem; }
+.ladder b { font-weight: 500; padding: 3px 10px; border-radius: 6px; background: var(--code-bg); }
+.ladder b:last-child { background: var(--accent); color: var(--bg); }
+.ladder i { font-style: normal; color: var(--muted); }
+.ladder-row { display: grid; gap: 8px; }
+
+/* Timeline */
+.timeline { list-style: none; margin: 0; padding: 0; display: grid; gap: 0; }
+.job { display: grid; grid-template-columns: 170px 1fr; gap: 24px; padding-block: 28px; border-top: 1px solid var(--line); }
+.job:last-child { border-bottom: 1px solid var(--line); }
+.when { font-family: var(--mono); font-size: .85rem; color: var(--muted); font-variant-numeric: tabular-nums; padding-top: 3px; }
+.job-body { display: grid; gap: 12px; min-width: 0; }
+.org { color: var(--muted); font-size: .95rem; }
+.job ul { margin: 0; padding-left: 18px; display: grid; gap: 6px; }
+.job li::marker { color: var(--accent); }
+.tags { display: flex; flex-wrap: wrap; gap: 6px; }
+.tags span { font-family: var(--mono); font-size: .75rem; padding: 2px 8px; border-radius: 5px; background: var(--code-bg); color: var(--ink); }
+
+/* Projects */
+.projects { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
+.project { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 24px; display: grid; gap: 12px; align-content: start; }
+.project ul { margin: 0; padding-left: 18px; display: grid; gap: 6px; font-size: .95rem; }
+.project li::marker { color: var(--accent); }
+.kind { font-family: var(--mono); font-size: .75rem; color: var(--accent); letter-spacing: .06em; text-transform: uppercase; }
+
+/* Skills */
+.skills { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px 40px; }
+.skill { display: grid; gap: 10px; align-content: start; }
+
+/* Education */
+.edu { display: grid; gap: 14px; }
+.edu-row { display: grid; grid-template-columns: 170px 1fr; gap: 24px; }
+.edu-row p:last-child { min-width: 0; }
+
+footer { color: var(--muted); font-size: .85rem; border-top: 1px solid var(--line); padding-top: 20px; }
+
+@media (max-width: 680px) {
+  .wrap { gap: 56px; padding-block: 32px 56px; }
+  .job, .edu-row { grid-template-columns: 1fr; gap: 8px; }
+  .projects, .skills { grid-template-columns: 1fr; }
+  .migration, .project { padding: 18px; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .flow { stroke-dasharray: 5 6; animation: dash 1.6s linear infinite; }
+  @keyframes dash { to { stroke-dashoffset: -22; } }
+}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <header>
+    <span class="status">Disponible immédiatement · Casablanca, Rabat, hybride ou remote</span>
+    <h1>Abdeljalil Ajdidi</h1>
+    <p class="role">Développeur Full Stack Senior Java / Angular</p>
+    <p class="lede">Plus de 9 ans sur Java (Spring Boot) et Angular. Je fais passer des applications monolithiques à des microservices conteneurisés, sans arrêter la production. Référent technique pendant plus de 6 ans sur une plateforme SaaS RH organisée en 4 équipes de 6 à 10 développeurs.</p>
+    <div class="contacts">
+      <div class="contact"><span id="email">abdeljalilajdidi@gmail.com</span><button class="copy" type="button" id="copy-email" data-target="email">Copier</button></div>
+      <div class="contact"><span id="phone">+212 6 63 18 61 91</span><button class="copy" type="button" id="copy-phone" data-target="phone">Copier</button></div>
+      <div class="contact"><a href="https://linkedin.com/in/abdeljalil-ajdidi" target="_blank" rel="noopener">LinkedIn</a></div>
+    </div>
+  </header>
+
+  <section class="section" aria-labelledby="h-migration">
+    <div class="section-head">
+      <span class="label">Projet PIXID · Atos · 2019 – 2026</span>
+      <h2 id="h-migration">Du monolithe Struts aux microservices Spring Boot 3</h2>
+    </div>
+    <div class="migration">
+      <div class="diagram" role="img" aria-label="Schéma : le monolithe Struts communique via Kafka avec des microservices Spring Boot 3 sur Kubernetes, appuyés par Redis, Elasticsearch et MariaDB.">
+        <svg viewBox="0 0 760 250" xmlns="http://www.w3.org/2000/svg">
+          <!-- Monolith -->
+          <rect x="10" y="60" width="170" height="130" rx="10" fill="var(--code-bg)" stroke="var(--line)"/>
+          <text x="95" y="96" text-anchor="middle" font-size="14" font-weight="500" fill="var(--ink)">Monolithe</text>
+          <text x="95" y="120" text-anchor="middle" font-size="12" fill="var(--muted)">Struts 1/2</text>
+          <text x="95" y="140" text-anchor="middle" font-size="12" fill="var(--muted)">Java 7 / 8 / 11</text>
+          <text x="95" y="166" text-anchor="middle" font-size="11" fill="var(--muted)">découpage progressif</text>
+          <!-- Kafka -->
+          <rect x="250" y="100" width="130" height="50" rx="25" fill="var(--accent-soft)" stroke="var(--accent)"/>
+          <text x="315" y="130" text-anchor="middle" font-size="13" font-weight="500" fill="var(--ink)">Kafka</text>
+          <line class="flow" x1="180" y1="125" x2="250" y2="125" stroke="var(--accent)" stroke-width="2"/>
+          <line class="flow" x1="380" y1="125" x2="450" y2="125" stroke="var(--accent)" stroke-width="2"/>
+          <!-- K8s cluster -->
+          <rect x="450" y="20" width="300" height="210" rx="12" fill="none" stroke="var(--muted)" stroke-dasharray="4 4"/>
+          <text x="462" y="40" font-size="11" fill="var(--muted)">Kubernetes</text>
+          <rect x="470" y="55" width="125" height="42" rx="8" fill="var(--surface)" stroke="var(--ink)"/>
+          <text x="532" y="81" text-anchor="middle" font-size="12" fill="var(--ink)">Spring Boot 3</text>
+          <rect x="610" y="55" width="125" height="42" rx="8" fill="var(--surface)" stroke="var(--ink)"/>
+          <text x="672" y="81" text-anchor="middle" font-size="12" fill="var(--ink)">Spring Boot 3</text>
+          <rect x="470" y="107" width="125" height="42" rx="8" fill="var(--surface)" stroke="var(--ink)"/>
+          <text x="532" y="133" text-anchor="middle" font-size="12" fill="var(--ink)">Spring Boot 3</text>
+          <rect x="610" y="107" width="125" height="42" rx="8" fill="var(--surface)" stroke="var(--ink)"/>
+          <text x="672" y="133" text-anchor="middle" font-size="12" fill="var(--ink)">Angular 15</text>
+          <!-- Data -->
+          <rect x="470" y="170" width="78" height="44" rx="8" fill="var(--code-bg)"/>
+          <text x="509" y="197" text-anchor="middle" font-size="11" fill="var(--ink)">Redis</text>
+          <rect x="556" y="170" width="98" height="44" rx="8" fill="var(--code-bg)"/>
+          <text x="605" y="197" text-anchor="middle" font-size="11" fill="var(--ink)">Elasticsearch</text>
+          <rect x="662" y="170" width="73" height="44" rx="8" fill="var(--code-bg)"/>
+          <text x="698" y="197" text-anchor="middle" font-size="11" fill="var(--ink)">MariaDB</text>
+        </svg>
+      </div>
+      <div class="ladder-row">
+        <span class="label">Montées de version Angular pilotées</span>
+        <div class="ladder" aria-label="Angular 8, 10, 12, 13 puis 15">
+          <b>8</b><i>→</i><b>10</b><i>→</i><b>12</b><i>→</i><b>13</b><i>→</i><b>15</b>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="h-parcours">
+    <div class="section-head">
+      <span class="label">Parcours</span>
+      <h2 id="h-parcours">Expériences</h2>
+    </div>
+    <ol class="timeline" reversed>
+      <li class="job">
+        <span class="when">Juin – Oct. 2026</span>
+        <div class="job-body">
+          <div><h3>Développeur Full Stack Java / Angular</h3><p class="org">Mission freelance · RADEET</p></div>
+          <p>Plateforme de gestion des réclamations clients pour le centre de relation client d'une régie de distribution d'eau et d'électricité.</p>
+          <ul>
+            <li>API REST sécurisée en Spring Boot 3 / Java 21 : JWT, gestion des rôles, réinitialisation du mot de passe par e-mail.</li>
+            <li>Deux sources de données : PostgreSQL (utilisateurs, JPA) et Oracle (abonnés et interventions, JDBC / HikariCP), avec recherche multicritère et pagination.</li>
+            <li>Front-end Angular 15 / Material : recherche d'abonnés, fiches de synthèse, suivi des interventions, administration.</li>
+            <li>Image Docker (Jib), scripts de déploiement et de supervision sur serveur Windows.</li>
+          </ul>
+          <div class="tags"><span>Java 21</span><span>Spring Boot 3</span><span>Oracle</span><span>PostgreSQL</span><span>Angular 15</span><span>Docker</span></div>
+        </div>
+      </li>
+      <li class="job">
+        <span class="when">Déc. 2019 – Juin 2026</span>
+        <div class="job-body">
+          <div><h3>Développeur Full Stack, Référent technique</h3><p class="org">Atos · Projet PIXID</p></div>
+          <p>Plateforme SaaS RH de mise en relation instantanée entre candidats et recruteurs, 4 équipes de 6 à 10 développeurs.</p>
+          <ul>
+            <li>Découpage du cœur Struts en microservices Spring Boot 3 sur Kubernetes, avec migration des données sans interruption de service.</li>
+            <li>Kafka entre le monolithe et les microservices, Redis pour les sessions partagées, Elasticsearch pour la recherche des profils et des missions.</li>
+            <li>Pilotage des montées de version Angular 8 à 15 : ruptures de compatibilité, moteur Ivy, RxJS, performances.</li>
+            <li>TMA en haute disponibilité, revues de code, spécifications techniques, qualité via SonarQube et JUnit 5.</li>
+          </ul>
+          <div class="tags"><span>Java 17</span><span>Spring Boot 3</span><span>Kubernetes</span><span>Kafka</span><span>Redis</span><span>Elasticsearch</span><span>Angular</span></div>
+        </div>
+      </li>
+      <li class="job">
+        <span class="when">Oct. 2018 – Fév. 2019</span>
+        <div class="job-body">
+          <div><h3>Ingénieur d'études et développement Java / .NET</h3><p class="org">IDEMIA National Security Solutions</p></div>
+          <p>Système de contrôle d'accès et de sécurité des visiteurs.</p>
+          <ul>
+            <li>Modules d'enregistrement, d'authentification et de filtrage des accès en environnement sécurisé.</li>
+            <li>Intégration des périphériques : scanner, capture de portrait, empreintes digitales, codes-barres.</li>
+            <li>Back-end Java, interface utilisateur en WPF.</li>
+          </ul>
+          <div class="tags"><span>Java</span><span>Spring</span><span>Hibernate</span><span>SQL Server</span><span>WPF</span></div>
+        </div>
+      </li>
+      <li class="job">
+        <span class="when">2016 – 2018</span>
+        <div class="job-body">
+          <div><h3>Ingénieur d'études et développement Java / J2EE</h3><p class="org">Certifia · Projet Agro Farm</p></div>
+          <p>Gestion et pilotage d'exploitations agricoles.</p>
+          <ul>
+            <li>Migration d'un client lourd .NET vers une application web Java Spring / MariaDB.</li>
+            <li>Tableaux de bord des charges d'exploitation et des marges par parcelle.</li>
+            <li>Circuits d'approbation en BPMN 2.0 avec Camunda intégré à Spring.</li>
+            <li>Jobs Jenkins de build, de tests et de déploiement continu sur Tomcat.</li>
+          </ul>
+          <div class="tags"><span>Java 8</span><span>Spring MVC</span><span>Camunda</span><span>Jenkins</span><span>MariaDB</span></div>
+        </div>
+      </li>
+    </ol>
+  </section>
+
+  <section class="section" aria-labelledby="h-projet">
+    <div class="section-head">
+      <span class="label">Projet personnel</span>
+      <h2 id="h-projet">Poulvage</h2>
+    </div>
+    <div class="projects">
+      <article class="project">
+        <span class="kind">SaaS de suivi de production avicole</span>
+        <h3>Conception et développement full stack</h3>
+        <ul>
+          <li>SaaS multi-sociétés : lots, stocks, ventes, charges, rentabilité et tableau de bord de direction.</li>
+          <li>Interface en français, arabe (RTL) et anglais.</li>
+          <li>Authentification JWT, e-mails transactionnels, logs centralisés Loki / Grafana.</li>
+        </ul>
+        <p><a href="https://poulvage.onrender.com" target="_blank" rel="noopener">poulvage.onrender.com</a></p>
+      </article>
+      <article class="project">
+        <span class="kind">Stack et déploiement</span>
+        <h3>Spring Boot, Angular, Docker</h3>
+        <ul>
+          <li>Back-end Spring Boot, Spring Security, JPA / Hibernate, MariaDB.</li>
+          <li>Front-end Angular 15.</li>
+          <li>Conteneurisation Docker et déploiement cloud sur Render.</li>
+        </ul>
+        <div class="tags"><span>Angular 15</span><span>Spring Boot</span><span>MariaDB</span><span>Docker</span><span>Render</span><span>Grafana</span></div>
+      </article>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="h-skills">
+    <div class="section-head">
+      <span class="label">Compétences</span>
+      <h2 id="h-skills">Ce que j'utilise au quotidien</h2>
+    </div>
+    <div class="skills">
+      <div class="skill"><h3>Back-end</h3><div class="tags"><span>Java 8 → 21</span><span>Spring Boot 2/3</span><span>Spring Security</span><span>Spring Batch</span><span>JPA / Hibernate</span><span>MapStruct</span><span>API REST</span></div></div>
+      <div class="skill"><h3>Front-end</h3><div class="tags"><span>Angular 8 → 15</span><span>Angular Material</span><span>TypeScript</span><span>RxJS</span><span>SASS</span><span>Chart.js</span></div></div>
+      <div class="skill"><h3>Systèmes distribués</h3><div class="tags"><span>Kafka</span><span>Redis</span><span>Elasticsearch</span><span>Camunda BPM</span></div></div>
+      <div class="skill"><h3>Données</h3><div class="tags"><span>MariaDB</span><span>MySQL</span><span>PostgreSQL</span><span>Oracle</span><span>SQL Server</span><span>MongoDB</span></div></div>
+      <div class="skill"><h3>DevOps</h3><div class="tags"><span>Kubernetes</span><span>Docker</span><span>Jenkins</span><span>Maven</span><span>Git</span><span>Loki / Grafana</span></div></div>
+      <div class="skill"><h3>Qualité et méthode</h3><div class="tags"><span>JUnit 5</span><span>Mockito</span><span>SonarQube</span><span>Revues de code</span><span>TMA</span><span>Scrum</span></div></div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="h-formation">
+    <div class="section-head">
+      <span class="label">Formation et langues</span>
+      <h2 id="h-formation">Formation</h2>
+    </div>
+    <div class="edu">
+      <div class="edu-row"><p class="when">2011 – 2016</p><p><strong>Diplôme d'ingénieur en systèmes d'information</strong>, École SupMTI Rabat, mention Bien</p></div>
+      <div class="edu-row"><p class="when">2007 – 2009</p><p>DEUG Sciences de la Matière Physique, Faculté polydisciplinaire Cadi Ayyad, Safi</p></div>
+      <div class="edu-row"><p class="when">Langues</p><p>Arabe, Français</p></div>
+    </div>
+  </section>
+
+  <footer>Abdeljalil Ajdidi · Casablanca, Maroc</footer>
+</div>
+
+<script>
+document.querySelectorAll('.copy').forEach(function (btn) {
+  btn.addEventListener('click', function () {
+    var text = document.getElementById(btn.dataset.target).textContent;
+    var done = function () { btn.textContent = 'Copié'; setTimeout(function () { btn.textContent = 'Copier'; }, 1600); };
+    var fallback = function () {
+      var r = document.createRange(); r.selectNodeContents(document.getElementById(btn.dataset.target));
+      var s = window.getSelection(); s.removeAllRanges(); s.addRange(r);
+      btn.textContent = 'Sélectionné';
+      setTimeout(function () { btn.textContent = 'Copier'; }, 1600);
+    };
+    try {
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(done, fallback);
+      } else { fallback(); }
+    } catch (e) { fallback(); }
+  });
+});
+</script>
+</body>
+</html>
